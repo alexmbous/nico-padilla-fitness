@@ -45,7 +45,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height);
+    scroll-padding-top: calc(var(--nav-height) + 16px);
 }
 
 body {
@@ -218,6 +218,9 @@ a:hover {
     font-weight: 600 !important;
     border-radius: var(--radius) !important;
     box-shadow: 0 2px 8px rgba(212, 168, 85, 0.3);
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
 }
 
 .nav-cta:hover {
@@ -1215,27 +1218,48 @@ a:hover {
 @media (max-width: 768px) {
     .nav-toggle { display: block; }
 
+    .navbar {
+        height: 56px;
+        --nav-height: 56px;
+    }
+
+    .nav-logo {
+        font-size: 1.15rem;
+    }
+
     .nav-links {
+        display: none;
         position: fixed;
-        top: var(--nav-height);
+        top: 56px;
         left: 0;
         right: 0;
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
-        padding: 16px 24px;
+        padding: 12px 20px;
         box-shadow: var(--shadow-lg);
-        transform: translateY(-120%);
-        transition: transform 0.3s;
+        z-index: 999;
     }
 
-    .nav-links.nav-open { transform: translateY(0); }
+    .nav-links.nav-open {
+        display: flex;
+    }
+
+    .nav-links li { width: 100%; }
 
     .nav-links a {
         color: var(--color-text) !important;
-        padding: 12px 16px;
+        padding: 10px 16px;
+        display: block;
         width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .nav-links .nav-cta {
+        text-align: center;
+        margin-top: 4px;
+        padding: 10px 16px !important;
     }
 
     .about-content { grid-template-columns: 1fr; gap: 32px; }
